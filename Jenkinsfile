@@ -1,20 +1,11 @@
 pipeline {
-    agent any
-
+    agent { 
+        docker 'maven:3.9.3-eclipse-temurin-17' 
+    } 
     stages {
-        stage('Build') {
+        stage('Example Build') {
             steps {
-                echo 'Build App'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Test App'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploy App'
+                sh 'mvn -B clean verify'
             }
         }
     }
