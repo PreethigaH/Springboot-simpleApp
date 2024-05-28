@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/PreethigaH/Springboot-simpleApp'
+                git 'https://github.com/PreethigaH/Springboot-simpleApp/tree/main'
             }
         }
         stage('Compile Code') {
