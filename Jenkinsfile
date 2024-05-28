@@ -26,9 +26,11 @@ pipeline {
     post{
         success{
             echo "Jenkins build - successful"
+            emailext body: 'Successfully completed the build', subject: 'Pipeline Status', to: 'pmuralidharan@teksystems.com'
         }
         failure{
             echo "Jenkins build failed"
+            emailext body: 'Failed to complete the build', subject: 'Pipeline Status', to: 'pmuralidharan@teksystems.com'
         }
     }
 }
