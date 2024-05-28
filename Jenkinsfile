@@ -1,12 +1,36 @@
 pipeline {
-    agent { 
-        docker 'maven:3.9.3-eclipse-temurin-17' 
-    } 
+    agent any
+
+    tools{
+        maven "Maven_Home"
+    }
+    
     stages {
-        stage('Example Build') {
+        stage('Checkout Code') {
             steps {
-                sh 'mvn -B clean verify'
+                git 'https://github.com/PreethigaH/Springboot-simpleApp'
             }
+        }
+        stage('Compile Code') {
+            steps {
+                bat "mvn compile"
+            }
+        }
+        stage('Test Code') {
+            steps {
+                bat "mvn test"
+            }
+        }
+        stage('Create build') {
+            steps {
+                bat "mvn package"
+            }
+        }
+    }
+
+    post{
+        failure{
+            echo "Jenkins build failed"
         }
     }
 }
