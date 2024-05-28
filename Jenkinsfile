@@ -6,11 +6,6 @@ pipeline {
     }
     
     stages {
-        /*stage('Checkout Code') {
-            steps {
-                git 'https://github.com/PreethigaH/Springboot-simpleApp/tree/main'
-            }
-        }*/
         stage('Compile Code') {
             steps {
                 bat "mvn compile"
@@ -29,6 +24,9 @@ pipeline {
     }
 
     post{
+        success{
+            echo "Jenkins build - successful"
+        }
         failure{
             echo "Jenkins build failed"
         }
