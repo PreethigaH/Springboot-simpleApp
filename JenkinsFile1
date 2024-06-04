@@ -2,7 +2,7 @@ node {
     def mvnHome
 
     stage('Setup Tools') {
-        mvnHome = tool "Maven_Home"
+        mvnHome = tool name: "Maven_Home" type: 'maven'
     }
 
     stage('Compile Code') {
