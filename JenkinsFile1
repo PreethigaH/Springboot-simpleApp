@@ -1,0 +1,19 @@
+node {
+    def mvnHome
+
+    stage('Setup Tools') {
+        mvnHome = tool "Maven_Home"
+    }
+
+    stage('Compile Code') {
+       bat "mvn compile"
+    }
+
+    stage('Test Code') {
+       bat "mvn test"
+    }
+
+    stage('Create build') {
+       bat "mvn package"
+    }
+}
