@@ -1,16 +1,11 @@
 node {
-    def mvnHome
-
-    stage('Setup Tools') {
-        mvnHome = tool name: 'Maven 3.6.3', type: 'maven'
-    }
-
+tool name: 'Maven_Home', type: 'maven'
     stage('Compile Code') {
-       bat "${mvnHome}\\bin\\mvn compile"
+       bat "mvn compile"
     }
 
     stage('Test Code') {
-       bat "mvn test"
+       bat "${mvnHome}\\bin\\mvn test"
     }
 
     stage('Create build') {
