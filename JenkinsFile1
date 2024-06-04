@@ -1,5 +1,4 @@
 node {
-tool name: 'Maven_Home', type: 'maven'
     stage('Compile Code') {
        bat "mvn compile"
     }
