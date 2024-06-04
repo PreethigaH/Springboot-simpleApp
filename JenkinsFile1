@@ -6,7 +6,7 @@ node {
     }
 
     stage('Compile Code') {
-       bat "mvn compile"
+       bat "${mvnHome}\\bin\\mvn compile"
     }
 
     stage('Test Code') {
