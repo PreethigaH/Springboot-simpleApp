@@ -4,7 +4,11 @@ node {
         git branch: 'main', url: 'https://github.com/PreethigaH/Springboot-simpleApp.git'
         mvnHome = tool 'Maven_Home'
     }
-    
+    stage('Test code') {
+        withEnv(["MVN_HOME=$mvnHome"]){
+            bat(/"%MVN_HOME%\bin\mvn" test/)
+        }
+    }
     stage('Build code') {
         withEnv(["MVN_HOME=$mvnHome"]) {
             bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
